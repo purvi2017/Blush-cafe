@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Blush Café</title>
+<meta name="description" content="Blush Café — a dreamy baby-pink café for handcrafted coffee, strawberry lattes, fresh bakes and sweet moments. Reserve a table and come say hi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Great+Vibes&family=Nunito:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --baby:#FADADD; --blush:#F8C8DC; --rose:#F4B6C2; --cream:#FFF8F3; --white:#FFFCFA;
+  --choc:#6B4545; --choc-2:#8A6262; --choc-3:#A88585; --berry:#E2557B; --berry-soft:#F07FA0;
+  --line:#F3D3DA;
+  --shadow:0 18px 40px -18px rgba(226,85,123,.35);
+  --shadow-sm:0 8px 22px -12px rgba(226,85,123,.35);
+  --script:"Great Vibes","Brush Script MT",cursive;
+  --hand:"Caveat","Segoe Print","Bradley Hand",cursive;
+  --head:"Quicksand","Nunito",ui-rounded,system-ui,sans-serif;
+  --body:"Nunito","Quicksand",ui-rounded,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --wrap:1180px;
+  --gutter:clamp(16px,4vw,40px);
+  --nav-h:72px;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{overflow-x:clip}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 12px)}
+body{margin:0;background:var(--cream);color:var(--choc);font-family:var(--body);font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:200;opacity:.06;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+img,svg{max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--head);font-weight:700;line-height:1.15;margin:0;text-wrap:balance;color:var(--choc)}
+p{margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--berry);outline-offset:3px;border-radius:12px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:fixed;left:16px;top:-60px;z-index:300;background:var(--choc);color:var(--cream);padding:10px 18px;border-radius:99px;text-decoration:none;transition:top .2s}
+.skip:focus{top:12px}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+section{position:relative}
+.section{padding-block:clamp(72px,10vw,128px)}
+.eyebrow{font-family:var(--hand);font-size:1.45rem;color:var(--berry);line-height:1;display:inline-block;margin-bottom:10px}
+.h2{font-size:clamp(2rem,4.4vw,3.1rem);letter-spacing:-.01em}
+.h2 .heart{color:var(--berry)}
+.lede{color:var(--choc-2);max-width:56ch;font-size:1.06rem}
+.center{text-align:center}
+.center .lede{margin-inline:auto}
+.sec-head{display:grid;gap:12px;margin-bottom:clamp(36px,5vw,56px)}
+
+/* ---------- Buttons ---------- */
+.btn{--bg:var(--choc);--fg:var(--cream);display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;border-radius:999px;border:0;background:var(--bg);color:var(--fg);font-family:var(--head);font-weight:700;font-size:1rem;letter-spacing:.01em;text-decoration:none;cursor:pointer;position:relative;overflow:hidden;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,background-color .3s;box-shadow:0 10px 24px -14px rgba(107,69,69,.55)}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s}
+.btn:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.btn:hover::after{transform:translateX(120%)}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn-pink{--bg:linear-gradient(135deg,var(--rose),var(--blush));background:linear-gradient(135deg,var(--rose),var(--blush));--fg:var(--choc);box-shadow:var(--shadow-sm)}
+.btn-ghost{background:rgba(255,252,250,.7);color:var(--choc);border:1.5px solid var(--rose);box-shadow:none;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.btn-ghost:hover{background:var(--white)}
+.btn .arr{transition:transform .3s}
+.btn:hover .arr{transform:translateX(4px)}
+
+/* ---------- Loader ---------- */
+#loader{position:fixed;inset:0;z-index:400;display:grid;place-items:center;background:var(--cream);animation:loaderOut .6s ease 1.1s forwards}
+#loader .cup{width:92px;animation:bob 1.2s ease-in-out infinite}
+#loader p{font-family:var(--script);font-size:2rem;color:var(--choc);text-align:center;margin-top:6px}
+#loader .steam{animation:steam 1.4s ease-in-out infinite;transform-origin:center bottom}
+@keyframes loaderOut{to{opacity:0;visibility:hidden}}
+@keyframes steam{0%{opacity:0;transform:translateY(6px) scale(.8)}50%{opacity:1}100%{opacity:0;transform:translateY(-10px) scale(1.1)}}
+
+/* ---------- Nav ---------- */
+.nav{position:fixed;left:0;right:0;top:0;z-index:100;padding-top:env(safe-area-inset-top,0px);transition:background .4s,box-shadow .4s,backdrop-filter .4s}
+.nav.scrolled{background:rgba(255,248,243,.72);backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3);box-shadow:0 10px 30px -22px rgba(107,69,69,.45)}
+.nav-inner{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-family:var(--script);font-size:2.05rem;line-height:1;color:var(--choc);white-space:nowrap}
+.logo svg{width:22px;height:22px;flex:none;transform:translateY(-4px)}
+.logo:hover svg{animation:beat .8s ease}
+.nav-links{display:flex;gap:4px;list-style:none;margin:0;padding:6px;border-radius:999px;background:rgba(255,252,250,.55);border:1px solid rgba(244,182,194,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.nav-links a{display:block;padding:8px 15px;border-radius:999px;text-decoration:none;font-family:var(--head);font-weight:600;font-size:.94rem;color:var(--choc-2);transition:background .25s,color .25s}
+.nav-links a:hover,.nav-links a.active{background:var(--baby);color:var(--choc)}
+.nav-cta{min-height:46px;padding:0 22px;font-size:.95rem}
+.burger{display:none;width:48px;height:48px;border-radius:50%;border:1.5px solid var(--rose);background:rgba(255,252,250,.8);cursor:pointer;place-items:center;padding:0}
+.burger span{display:block;width:20px;height:2px;border-radius:2px;background:var(--choc);position:relative;transition:background .2s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:20px;height:2px;border-radius:2px;background:var(--choc);transition:transform .3s}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.burger[aria-expanded="true"] span{background:transparent}
+.burger[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+.mobile-menu{position:fixed;inset:0;z-index:99;background:rgba(255,248,243,.94);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;padding:calc(var(--nav-h) + 20px) 24px 40px}
+.mobile-menu a:not(.btn){font-family:var(--head);font-weight:700;font-size:1.6rem;text-decoration:none;padding:8px 18px;border-radius:999px}
+.mobile-menu a:not(.btn):hover{background:var(--baby)}
+.mobile-menu .btn{margin-top:18px}
+.mobile-menu .mm-note{font-family:var(--hand);font-size:1.4rem;color:var(--berry);margin-top:10px}
+.mobile-menu:not([hidden]) a{animation:rise .5s cubic-bezier(.2,.8,.2,1) backwards}
+.mobile-menu:not([hidden]) a:nth-child(2){animation-delay:.04s}.mobile-menu:not([hidden]) a:nth-child(3){animation-delay:.08s}.mobile-menu:not([hidden]) a:nth-child(4){animation-delay:.12s}.mobile-menu:not([hidden]) a:nth-child(5){animation-delay:.16s}.mobile-menu:not([hidden]) a:nth-child(6){animation-delay:.2s}.mobile-menu:not([hidden]) a:nth-child(7){animation-delay:.24s}
+
+/* ---------- Hero ---------- */
+.hero{min-height:100svh;display:flex;align-items:center;padding-top:calc(var(--nav-h) + 40px);padding-bottom:70px;overflow:hidden;
+  background:linear-gradient(125deg,var(--cream) 0%,var(--baby) 30%,var(--white) 55%,var(--blush) 80%,var(--cream) 100%);background-size:300% 300%;animation:grad 18s ease-in-out infinite}
+@keyframes grad{0%,100%{background-position:0% 40%}50%{background-position:100% 60%}}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,70px);align-items:center;width:100%}
+.hero-copy{position:relative;z-index:2}
+.pill-tag{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:999px;background:rgba(255,252,250,.75);border:1px solid var(--rose);font-family:var(--head);font-weight:600;font-size:.88rem;color:var(--choc-2);margin-bottom:22px}
+.pill-tag i{width:8px;height:8px;border-radius:50%;background:var(--berry);box-shadow:0 0 0 4px rgba(226,85,123,.18);animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(226,85,123,0)}}
+.hero h1{font-size:clamp(2.9rem,7.2vw,5.6rem);letter-spacing:-.025em;line-height:1.02}
+.hero h1 .w{display:inline-block;animation:wordIn .9s cubic-bezier(.2,.8,.2,1) backwards}
+.hero h1 .sip{font-family:var(--script);font-weight:400;color:var(--berry);font-size:1.28em;letter-spacing:0;line-height:.8;padding-right:.08em}
+.hero h1 .hh{color:var(--berry);display:inline-block;animation:wordIn .9s cubic-bezier(.2,.8,.2,1) 1.9s backwards,beat 2.4s ease-in-out 3s infinite}
+@keyframes wordIn{from{opacity:0;transform:translateY(.4em) rotate(2deg);filter:blur(6px)}}
+.hero .sub{font-family:var(--head);font-weight:600;font-size:clamp(1.2rem,2.2vw,1.5rem);margin-top:20px;color:var(--choc)}
+.hero .support{margin-top:12px;max-width:44ch;color:var(--choc-2);font-size:1.08rem}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:22px;margin-top:36px;font-size:.93rem;color:var(--choc-2)}
+.hero-meta b{display:block;font-family:var(--head);font-size:1.15rem;color:var(--choc)}
+.hero-art{position:relative;justify-self:center;width:min(100%,500px);z-index:1}
+.arch{position:relative;aspect-ratio:4/5;border-radius:999px 999px 36px 36px;overflow:hidden;background:linear-gradient(180deg,#fff 0%,var(--baby) 100%);border:10px solid var(--white);box-shadow:0 40px 80px -40px rgba(226,85,123,.55);animation:floaty 6s ease-in-out infinite}
+.arch svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-art .blob{position:absolute;z-index:-1;border-radius:42% 58% 63% 37% / 41% 44% 56% 59%;animation:morph 14s ease-in-out infinite}
+.hero-art .b1{width:80%;height:70%;right:-14%;top:-6%;background:var(--blush)}
+.hero-art .b2{width:55%;height:45%;left:-16%;bottom:-6%;background:var(--rose);opacity:.6;animation-delay:-5s}
+@keyframes morph{0%,100%{border-radius:42% 58% 63% 37% / 41% 44% 56% 59%}50%{border-radius:61% 39% 38% 62% / 55% 61% 39% 45%}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.sticker{position:absolute;background:var(--white);border-radius:20px;padding:12px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:10px;font-family:var(--head);font-weight:700;font-size:.92rem;z-index:3}
+.sticker small{display:block;font-family:var(--body);font-weight:500;color:var(--choc-3);font-size:.8rem}
+.sticker .dot{width:38px;height:38px;border-radius:50%;background:var(--baby);display:grid;place-items:center;font-size:1.1rem}
+.st1{left:-8%;top:18%;animation:floaty 5s ease-in-out -1s infinite}
+.st2{right:-6%;bottom:16%;animation:floaty 5.5s ease-in-out -3s infinite}
+.hand-note{position:absolute;font-family:var(--hand);font-size:1.5rem;color:var(--berry);transform:rotate(-8deg);white-space:nowrap}
+.hero-art .hand-note{right:4%;top:-4%}
+.floaters{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.fl{position:absolute;color:var(--berry);opacity:.55;font-size:var(--s,18px);animation:drift var(--d,14s) ease-in-out var(--dl,0s) infinite;will-change:transform}
+.fl.soft{color:var(--rose);opacity:.9}
+.fl svg{width:1em;height:1em;display:block}
+@keyframes drift{0%,100%{transform:translate(0,0) rotate(0)}25%{transform:translate(12px,-22px) rotate(10deg)}50%{transform:translate(-8px,-40px) rotate(-6deg)}75%{transform:translate(-16px,-16px) rotate(8deg)}}
+
+/* ---------- Marquee ---------- */
+.marquee{background:var(--choc);color:var(--cream);transform:rotate(-1.6deg);margin-top:-26px;margin-inline:-20px;position:relative;z-index:5;padding-block:16px;overflow:hidden;box-shadow:0 20px 40px -24px rgba(107,69,69,.6)}
+.marquee.alt{background:var(--rose);color:var(--choc);transform:rotate(1.2deg);margin-top:-54px;z-index:4;opacity:.9}
+.mq-track{display:flex;width:max-content;animation:mq 38s linear infinite}
+.marquee.alt .mq-track{animation-direction:reverse;animation-duration:46s}
+.mq-track span{font-family:var(--head);font-weight:700;letter-spacing:.14em;font-size:clamp(1rem,2vw,1.3rem);white-space:nowrap;padding-right:1.2em}
+.mq-track em{font-style:normal;color:var(--rose);padding-inline:.35em}
+.marquee.alt em{color:var(--berry)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- Story ---------- */
+.story{background:var(--white)}
+.story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,7vw,100px);align-items:center}
+.polaroid-wrap{position:relative;justify-self:center;width:min(100%,420px)}
+.polaroid{background:#fff;padding:16px 16px 64px;border-radius:6px;box-shadow:0 30px 60px -30px rgba(107,69,69,.45),0 2px 6px rgba(107,69,69,.08);transform:rotate(-4deg);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.polaroid:hover{transform:rotate(-1deg) scale(1.02)}
+.polaroid .ph{aspect-ratio:1/1;border-radius:3px;overflow:hidden;background:var(--baby)}
+.polaroid .ph svg{width:100%;height:100%;display:block}
+.polaroid figcaption{position:absolute;left:0;right:0;bottom:16px;text-align:center;font-family:var(--hand);font-size:1.6rem;color:var(--choc-2)}
+.tape{position:absolute;width:110px;height:32px;background:rgba(248,200,220,.75);top:-14px;left:50%;transform:translateX(-50%) rotate(3deg);border-radius:3px;box-shadow:0 2px 6px rgba(0,0,0,.04)}
+.polaroid-wrap .n1{left:-10%;bottom:14%;transform:rotate(-10deg)}
+.polaroid-wrap .n2{right:-8%;top:8%;transform:rotate(9deg)}
+.polaroid-wrap .n2::before,.polaroid-wrap .n1::after{content:"";display:block}
+.back-card{position:absolute;inset:6% -6% -4% 10%;background:var(--baby);border-radius:6px;transform:rotate(5deg);z-index:-1}
+.story-copy .quote{font-family:var(--head);font-weight:600;font-size:clamp(1.3rem,2.4vw,1.7rem);line-height:1.45;margin-top:22px;color:var(--choc)}
+.story-copy p.more{margin-top:18px;color:var(--choc-2);max-width:52ch}
+.story-sign{margin-top:28px;display:flex;align-items:center;gap:14px}
+.story-sign .sig{font-family:var(--script);font-size:2.3rem;color:var(--berry);line-height:1}
+.story-sign small{color:var(--choc-3);font-size:.9rem}
+.stats{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.stat{padding:12px 18px;border-radius:18px;background:var(--cream);border:1px solid var(--line);min-width:120px}
+.stat b{font-family:var(--head);font-size:1.4rem;display:block;line-height:1.2}
+.stat span{font-size:.85rem;color:var(--choc-3)}
+
+/* ---------- Favorites ---------- */
+.favs{background:var(--cream)}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2.2vw,26px)}
+.card{position:relative;background:var(--white);border-radius:28px;padding:12px;border:1px solid var(--line);transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-10px) rotate(-1deg);box-shadow:0 26px 50px -24px rgba(226,85,123,.5)}
+.card:nth-child(even):hover{transform:translateY(-10px) rotate(1deg)}
+.card-img{aspect-ratio:1/1;border-radius:20px;overflow:hidden;position:relative}
+.card-img svg{width:100%;height:100%;display:block;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.card:hover .card-img svg{transform:scale(1.07) rotate(-2deg)}
+.fav{position:absolute;top:22px;right:22px;width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,252,250,.85);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:grid;place-items:center;cursor:pointer;color:var(--berry);transition:transform .25s;z-index:2}
+.fav svg{width:20px;height:20px}
+.fav:hover{transform:scale(1.12)}
+.fav[aria-pressed="true"] svg path{fill:var(--berry)}
+.fav.pop{animation:popH .45s cubic-bezier(.2,.8,.2,1.4)}
+@keyframes popH{40%{transform:scale(1.35)}}
+.card-body{padding:16px 8px 8px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card-tag{font-family:var(--hand);font-size:1.15rem;color:var(--berry);line-height:1}
+.card h3{font-size:1.14rem}
+.card p{font-size:.93rem;color:var(--choc-2);line-height:1.5}
+.card-foot{margin-top:auto;padding-top:10px;display:flex;align-items:center;justify-content:space-between}
+.price{font-family:var(--head);font-weight:700;font-size:1.15rem;font-variant-numeric:tabular-nums}
+.card-foot .kcal{font-size:.8rem;color:var(--choc-3)}
+.favs-cta{display:flex;justify-content:center;margin-top:46px}
+
+/* ---------- Mood ---------- */
+.mood{background:linear-gradient(180deg,var(--cream),var(--baby) 60%,var(--cream))}
+.mood-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.mood-tile{display:flex;flex-direction:column;align-items:center;gap:10px;padding:34px 18px 28px;border-radius:30px;background:rgba(255,252,250,.7);border:1.5px solid rgba(244,182,194,.8);cursor:pointer;text-align:center;transition:background .4s,transform .4s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .4s;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.mood-tile .ic{font-size:2.8rem;line-height:1;width:84px;height:84px;display:grid;place-items:center;border-radius:50%;background:var(--baby);transition:transform .5s cubic-bezier(.2,.8,.2,1.4),background .4s}
+.mood-tile b{font-family:var(--head);font-size:1.12rem}
+.mood-tile small{font-size:.86rem;color:var(--choc-3)}
+.mood-tile:hover,.mood-tile[aria-pressed="true"]{background:var(--white);border-color:var(--berry-soft);transform:translateY(-6px);box-shadow:var(--shadow)}
+.mood-tile:hover .ic,.mood-tile[aria-pressed="true"] .ic{transform:rotate(-12deg) scale(1.15);background:var(--blush);animation:wiggle .7s ease}
+@keyframes wiggle{25%{transform:rotate(12deg) scale(1.15)}50%{transform:rotate(-10deg) scale(1.18)}75%{transform:rotate(6deg) scale(1.15)}}
+.mood-result{margin:30px auto 0;max-width:560px;min-height:92px;text-align:center;padding:20px 26px;border-radius:24px;background:var(--white);border:1px dashed var(--rose);color:var(--choc-2)}
+.mood-result b{font-family:var(--head);color:var(--choc);font-size:1.1rem}
+.mood-result .hand{font-family:var(--hand);font-size:1.4rem;color:var(--berry);display:block;line-height:1.1}
+
+/* ---------- Gallery ---------- */
+.gallery{background:var(--white);overflow:hidden}
+.masonry{columns:4 220px;column-gap:18px}
+.g-item{break-inside:avoid;margin:0 0 18px;border-radius:24px;overflow:hidden;position:relative;background:var(--baby)}
+.g-item svg{display:block;width:100%;height:auto;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.g-item:hover svg{transform:scale(1.08)}
+.g-item figcaption{position:absolute;left:12px;bottom:12px;padding:6px 14px;border-radius:999px;background:rgba(255,252,250,.85);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);font-family:var(--hand);font-size:1.2rem;line-height:1.2;color:var(--choc);transform:translateY(6px);opacity:.92;transition:transform .4s,opacity .4s}
+.g-item:hover figcaption{transform:none;opacity:1}
+.g-heart{break-inside:avoid;display:flex;justify-content:center;gap:18px;margin:4px 0 20px;color:var(--rose);font-size:1.3rem}
+.g-heart span{animation:drift 7s ease-in-out infinite}
+.g-heart span:nth-child(2){animation-delay:-2s;color:var(--berry-soft)}
+.g-heart span:nth-child(3){animation-delay:-4s}
+.insta{display:flex;justify-content:center;margin-top:40px;gap:14px;flex-wrap:wrap;align-items:center}
+.insta .hand{font-family:var(--hand);font-size:1.5rem;color:var(--berry)}
+
+/* ---------- Why ---------- */
+.why{background:var(--cream)}
+.why-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.why-card{padding:30px 24px;border-radius:28px;background:var(--white);border:1px solid var(--line);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
+.why-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.why-card .ico{width:62px;height:62px;border-radius:20px;background:var(--baby);display:grid;place-items:center;margin-bottom:20px;transition:transform .45s cubic-bezier(.2,.8,.2,1.4)}
+.why-card:hover .ico{transform:rotate(-8deg) scale(1.08)}
+.why-card .ico svg{width:32px;height:32px;fill:none;stroke:var(--choc);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.why-card h3{font-size:1.15rem}
+.why-card h3 span{color:var(--berry)}
+.why-card p{margin-top:6px;color:var(--choc-2);font-size:.96rem}
+
+/* ---------- Reviews ---------- */
+.reviews{background:var(--white);overflow:hidden}
+.rv-rating{display:inline-flex;align-items:center;gap:12px;padding:10px 20px;border-radius:999px;background:var(--cream);border:1px solid var(--line);margin-inline:auto;font-size:.93rem;color:var(--choc-2)}
+.rv-rating b{font-family:var(--head);font-size:1.25rem;color:var(--choc)}
+.stars{color:var(--berry);letter-spacing:2px}
+.carousel{position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.rv-track{display:flex;gap:22px;width:max-content;animation:mq 60s linear infinite;padding-block:14px 30px}
+.carousel:hover .rv-track,.carousel:focus-within .rv-track,.carousel.paused .rv-track{animation-play-state:paused}
+.review{width:min(360px,78vw);flex:none;padding:28px 26px 24px;border-radius:28px;background:var(--cream);border:1px solid var(--line);display:flex;flex-direction:column;gap:14px;transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s,background .3s}
+.review:nth-child(3n+2){background:var(--baby)}
+.review:hover{transform:translateY(-8px) rotate(-.6deg);box-shadow:var(--shadow);background:var(--white)}
+.review q{font-family:var(--head);font-weight:600;font-size:1.06rem;line-height:1.5;quotes:"“" "”"}
+.review footer{display:flex;align-items:center;gap:12px;margin-top:auto}
+.avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:var(--head);font-weight:700;color:var(--choc);background:var(--rose)}
+.review footer b{font-family:var(--head);display:block;line-height:1.2}
+.review footer small{color:var(--choc-3);font-size:.84rem}
+.carousel-ctrl{display:flex;justify-content:center;margin-top:8px}
+.carousel-ctrl button{border:1.5px solid var(--rose);background:var(--white);border-radius:999px;padding:8px 18px;font-family:var(--head);font-weight:600;cursor:pointer;font-size:.9rem}
+
+/* ---------- Feeling ---------- */
+.feeling{background:linear-gradient(160deg,var(--baby),var(--blush) 55%,var(--rose));overflow:hidden}
+.feeling .wrap{text-align:center}
+.feeling .h2{font-family:var(--head)}
+.feel-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:34px}
+.feel-btn{min-height:58px;padding:0 26px;border-radius:999px;border:0;background:var(--white);font-family:var(--head);font-weight:700;font-size:1.05rem;cursor:pointer;display:inline-flex;align-items:center;gap:10px;box-shadow:0 12px 26px -16px rgba(107,69,69,.5);transition:transform .35s cubic-bezier(.2,.8,.2,1.4),background .3s}
+.feel-btn span{font-size:1.4rem;transition:transform .4s cubic-bezier(.2,.8,.2,1.6)}
+.feel-btn:hover{transform:translateY(-4px) scale(1.03)}
+.feel-btn:hover span{transform:scale(1.25) rotate(-12deg)}
+.feel-btn:active{transform:scale(.95)}
+.feel-btn.on{background:var(--choc);color:var(--cream)}
+.feel-msg{margin-top:28px;font-family:var(--script);font-size:clamp(1.9rem,4vw,2.6rem);color:var(--choc);min-height:1.4em;line-height:1.2}
+.feel-msg.show{animation:wordIn .6s cubic-bezier(.2,.8,.2,1)}
+.burst{position:fixed;pointer-events:none;z-index:250;font-size:var(--fs,18px);color:var(--berry);animation:burst 1.2s cubic-bezier(.2,.8,.2,1) forwards;left:0;top:0}
+@keyframes burst{0%{opacity:1;transform:translate(var(--x0),var(--y0)) scale(.4)}70%{opacity:1}100%{opacity:0;transform:translate(var(--x1),var(--y1)) scale(1.1) rotate(var(--r))}}
+
+/* ---------- Visit ---------- */
+.visit{background:var(--cream)}
+.visit-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,5vw,60px);align-items:stretch}
+.visit-card{padding:clamp(28px,4vw,44px);border-radius:32px;background:var(--white);border:1px solid var(--line);display:flex;flex-direction:column;gap:22px}
+.visit-card .brand{font-family:var(--script);font-size:2.6rem;line-height:1;color:var(--choc)}
+.info-row{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+.info-row .ii{width:44px;height:44px;border-radius:14px;background:var(--baby);display:grid;place-items:center}
+.info-row .ii svg{width:22px;height:22px;fill:none;stroke:var(--choc);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.info-row b{font-family:var(--head);display:block;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--choc-3);font-weight:700}
+.info-row .val{font-size:1.05rem;color:var(--choc);display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.open-now{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--baby);color:var(--choc)}
+.open-now i{width:7px;height:7px;border-radius:50%;background:#6cae76}
+.open-now.closed i{background:var(--choc-3)}
+.copy{border:1px solid var(--rose);background:transparent;border-radius:999px;font-size:.78rem;padding:2px 10px;cursor:pointer;color:var(--choc-2);font-family:var(--head);font-weight:600}
+.copy:hover{background:var(--baby)}
+.visit-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:auto}
+.map-frame{border-radius:36px;padding:12px;background:linear-gradient(135deg,var(--rose),var(--blush),var(--baby));box-shadow:var(--shadow);position:relative;min-height:340px}
+.map-frame .map{width:100%;height:100%;border-radius:26px;overflow:hidden;background:#fff6f4;position:relative}
+.map-frame svg{width:100%;height:100%;display:block}
+.pin-pulse{transform-origin:center;transform-box:fill-box;animation:ping 2.2s ease-out infinite}
+@keyframes ping{0%{transform:scale(.4);opacity:.8}100%{transform:scale(2.4);opacity:0}}
+.map-label{position:absolute;left:16px;top:16px;padding:8px 14px;border-radius:999px;background:rgba(255,252,250,.9);font-family:var(--head);font-weight:700;font-size:.9rem;box-shadow:var(--shadow-sm)}
+
+/* ---------- Newsletter ---------- */
+.news{background:var(--cream);padding-bottom:clamp(72px,10vw,120px)}
+.news-card{position:relative;overflow:hidden;border-radius:40px;padding:clamp(40px,6vw,72px) clamp(22px,5vw,70px);background:radial-gradient(circle at 15% 20%,var(--white) 0,transparent 40%),linear-gradient(135deg,var(--blush),var(--baby) 50%,var(--rose));text-align:center}
+.news-card .h2{max-width:18ch;margin-inline:auto}
+.news-card p{color:var(--choc-2);margin:14px auto 0;max-width:46ch}
+.news-form{margin:30px auto 0;max-width:520px;display:flex;gap:8px;padding:8px;border-radius:999px;background:var(--white);box-shadow:var(--shadow)}
+.news-form input{flex:1;min-width:0;border:0;background:transparent;padding:0 18px;font:inherit;color:var(--choc);min-height:52px;border-radius:999px}
+.news-form input::placeholder{color:var(--choc-3)}
+.news-form input:focus{outline:none}
+.news-form:focus-within{outline:3px solid var(--berry);outline-offset:3px}
+.news-status{margin-top:14px;min-height:1.6em;font-family:var(--hand);font-size:1.4rem;color:var(--choc)}
+.news-card .deco{position:absolute;font-size:2rem;color:var(--white);opacity:.9;animation:drift 10s ease-in-out infinite}
+
+/* ---------- Footer ---------- */
+.footer{background:var(--baby);padding-block:60px 30px;position:relative}
+.footer::before{content:"";position:absolute;left:0;right:0;top:-38px;height:40px;background:var(--baby);-webkit-mask:radial-gradient(22px at 50% 100%,#000 98%,transparent) 50% / 44px 100% repeat-x;mask:radial-gradient(22px at 50% 100%,#000 98%,transparent) 50% / 44px 100% repeat-x}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:30px;align-items:start}
+.foot-grid .logo{font-size:2.6rem}
+.foot-grid .tag{margin-top:8px;color:var(--choc-2)}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 10px;justify-content:flex-end;list-style:none;margin:0;padding:0}
+.foot-links a{display:inline-block;padding:8px 16px;border-radius:999px;background:var(--white);text-decoration:none;font-family:var(--head);font-weight:600;font-size:.93rem;transition:background .25s,transform .25s}
+.foot-links a:hover{background:var(--rose);transform:translateY(-2px)}
+.foot-bottom{margin-top:44px;padding-top:22px;border-top:1px dashed var(--rose);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:.9rem;color:var(--choc-2)}
+.foot-bottom .made{font-family:var(--hand);font-size:1.35rem;color:var(--choc)}
+.foot-bottom .made span{color:var(--berry);display:inline-block;animation:beat 1.8s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.25)}30%{transform:scale(1)}45%{transform:scale(1.18)}}
+
+/* ---------- Modals ---------- */
+.modal{position:fixed;inset:0;z-index:260;display:grid;place-items:center;padding:20px;background:rgba(107,69,69,.28);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:fadeIn .3s ease}
+.modal-box{width:min(560px,100%);max-height:min(88vh,860px);overflow:auto;background:var(--white);border-radius:32px;padding:clamp(24px,4vw,40px);position:relative;box-shadow:0 40px 90px -40px rgba(107,69,69,.6);animation:rise .45s cubic-bezier(.2,.8,.2,1)}
+.modal-box.wide{width:min(760px,100%)}
+.modal-close{position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--rose);background:var(--white);cursor:pointer;font-size:1.3rem;line-height:1;display:grid;place-items:center}
+.modal-close:hover{background:var(--baby)}
+.modal h2{font-size:1.9rem;padding-right:44px}
+.modal .hint{color:var(--choc-2);margin-top:6px;font-size:.95rem}
+@keyframes fadeIn{from{opacity:0}}
+@keyframes rise{from{opacity:0;transform:translateY(24px) scale(.98)}}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font-family:var(--head);font-weight:700;font-size:.88rem}
+.field input,.field select,.field textarea{font:inherit;color:var(--choc);background:var(--cream);border:1.5px solid var(--line);border-radius:16px;padding:12px 14px;min-height:50px;transition:border-color .2s,background .2s}
+.field textarea{min-height:84px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--berry);background:#fff}
+.field .err{font-size:.82rem;color:#b3395a;min-height:1em}
+.form .btn{grid-column:1/-1;margin-top:6px}
+.success{text-align:center;padding:10px 0}
+.success .big{font-size:3rem;animation:beat 1.4s ease-in-out infinite;display:inline-block;color:var(--berry)}
+.success h3{font-size:1.6rem;margin-top:6px}
+.success p{color:var(--choc-2);margin-top:8px}
+.menu-cats{display:grid;gap:24px;margin-top:24px}
+.menu-cat h3{font-family:var(--hand);font-size:1.7rem;color:var(--berry);font-weight:600;margin-bottom:6px}
+.menu-row{display:flex;align-items:baseline;gap:10px;padding:8px 0}
+.menu-row .nm{font-family:var(--head);font-weight:700}
+.menu-row .ds{display:block;font-size:.86rem;color:var(--choc-3);font-family:var(--body);font-weight:400}
+.menu-row .dots{flex:1;border-bottom:2px dotted var(--rose);transform:translateY(-4px);min-width:20px}
+.menu-row .pr{font-family:var(--head);font-weight:700;font-variant-numeric:tabular-nums}
+.menu-note{margin-top:22px;font-size:.88rem;color:var(--choc-3);text-align:center}
+
+/* ---------- Reveal ---------- */
+.rv{transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1),filter .9s;transition-delay:var(--rd,0s)}
+.rv-wait{opacity:0;transform:translateY(28px);filter:blur(4px)}
+
+/* ---------- Cursor ---------- */
+.cursor{position:fixed;left:0;top:0;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:rgba(244,182,194,.75);border:1.5px solid var(--berry-soft);pointer-events:none;z-index:300;transition:width .25s,height .25s,margin .25s,background .25s;mix-blend-mode:multiply;display:none}
+.cursor.big{width:44px;height:44px;margin:-22px 0 0 -22px;background:rgba(248,200,220,.45)}
+.has-cursor .cursor{display:block}
+.has-cursor,.has-cursor a,.has-cursor button{cursor:none}
+.trail{position:fixed;left:0;top:0;pointer-events:none;z-index:299;color:var(--berry-soft);font-size:12px;animation:trail 1.1s ease-out forwards}
+@keyframes trail{from{opacity:.95;transform:translate(var(--x),var(--y)) scale(.6)}to{opacity:0;transform:translate(var(--x),calc(var(--y) - 34px)) scale(1.1) rotate(15deg)}}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1060px){
+  .nav-links a{padding:8px 11px;font-size:.9rem}
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .why-grid,.mood-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:900px){
+  .nav-links,.nav .nav-cta{display:none}
+  .burger{display:grid}
+  .hero{min-height:auto;padding-top:calc(var(--nav-h) + 30px)}
+  .hero-grid,.story-grid,.visit-grid{grid-template-columns:1fr}
+  .hero-art{width:min(88%,420px);margin-top:10px}
+  .story-grid .polaroid-wrap{order:-1;width:min(84%,380px)}
+  .foot-grid{grid-template-columns:1fr}
+  .foot-links{justify-content:flex-start}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .cards{grid-template-columns:1fr;max-width:400px;margin-inline:auto}
+  .mood-tile{padding:24px 12px 20px}
+  .mood-tile .ic{width:68px;height:68px;font-size:2.2rem}
+  .why-grid{grid-template-columns:1fr}
+  .hero-ctas .btn{flex:1 1 100%}
+  .st1{left:-4%}.st2{right:-4%}
+  .sticker{font-size:.82rem;padding:9px 12px}
+  .sticker .dot{width:30px;height:30px}
+  .form{grid-template-columns:1fr}
+  .news-form{flex-direction:column;border-radius:28px}
+  .news-form .btn{width:100%}
+  .visit-ctas .btn{flex:1 1 100%}
+  .masonry{columns:2 140px;column-gap:12px}
+  .g-item{margin-bottom:12px;border-radius:18px}
+  .polaroid-wrap .n1{left:-2%}.polaroid-wrap .n2{right:-2%}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  #loader{display:none}
+  .rv-wait{opacity:1;transform:none;filter:none}
+  .floaters,.g-heart{display:none}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div id="loader" aria-hidden="true">
+  <div>
+    <svg class="cup" viewBox="0 0 120 120">
+      <path class="steam" d="M60 40c-6-7-14-4-14 2 0 6 14 12 14 12s14-6 14-12c0-6-8-9-14-2z" fill="#E2557B"/>
+      <path d="M26 58h64v10c0 20-14 32-32 32S26 88 26 68z" fill="#F4B6C2"/>
+      <path d="M90 64c14 0 14 20-2 20" fill="none" stroke="#F4B6C2" stroke-width="7" stroke-linecap="round"/>
+      <ellipse cx="58" cy="58" rx="32" ry="6" fill="#FFF8F3"/>
+      <ellipse cx="58" cy="104" rx="42" ry="5" fill="#FADADD"/>
+    </svg>
+    <p>Blush Café</p>
+  </div>
+</div>
+
+<div class="cursor" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="logo" href="#home" aria-label="Blush Café, back to top">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.2 3 4.5 6.6 4.5c2.2 0 3.7 1.3 4.6 2.8h1.6c.9-1.5 2.4-2.8 4.6-2.8 3.6 0 5.7 3.7 4.2 7.2C19.5 16.4 12 21 12 21z" fill="#E2557B"/></svg>
+      Blush Café
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#visit">Visit Us</a></li>
+      </ul>
+    </nav>
+    <button class="btn nav-cta" type="button" data-open="reserve">Reserve a Table</button>
+    <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" hidden>
+  <a href="#home">Home</a>
+  <a href="#story">Our Story</a>
+  <a href="#menu">Menu</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#visit">Visit Us</a>
+  <button class="btn" type="button" data-open="reserve">Reserve a Table ♡</button>
+  <span class="mm-note" aria-hidden="true">see you soon ♡</span>
+</div>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero" id="home" aria-labelledby="hero-title">
+  <div class="floaters" aria-hidden="true" id="hero-floaters"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="pill-tag"><i></i><span id="hero-status">Freshly brewing today</span></span>
+      <h1 id="hero-title">
+        <span class="w" style="animation-delay:1.2s">Love</span>
+        <span class="w" style="animation-delay:1.35s">at</span>
+        <span class="w" style="animation-delay:1.5s">First</span>
+        <span class="w sip" style="animation-delay:1.65s">Sip</span>
+        <span class="hh" aria-hidden="true">♡</span>
+      </h1>
+      <p class="sub">Coffee, cakes &amp; a little bit of blush.</p>
+      <p class="support">Your cozy little escape for handcrafted coffee, dreamy desserts and sweet moments.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-pink" href="#menu">Explore Our Menu <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#visit">Visit Blush Café</a>
+      </div>
+      <div class="hero-meta">
+        <div><b>9 AM – 11 PM</b>Open every day</div>
+        <div><b>4.9 ★</b>from 1,200+ sweet reviews</div>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <span class="hand-note">today's special ♡</span>
+      <div class="arch" id="hero-arch"></div>
+      <div class="sticker st1"><span class="dot">🍓</span><span>Strawberry Cloud<small>our #1 latte</small></span></div>
+      <div class="sticker st2"><span class="dot">♡</span><span>Baked at 7 AM<small>every single day</small></span></div>
+    </div>
+  </div>
+</section>
+
+<div aria-hidden="true" style="overflow:hidden;padding-block:30px;margin-block:-30px;position:relative;z-index:5">
+  <div class="marquee"><div class="mq-track" id="mq1"></div></div>
+  <div class="marquee alt"><div class="mq-track" id="mq2"></div></div>
+</div>
+
+<!-- STORY -->
+<section class="section story" id="story" aria-labelledby="story-title">
+  <div class="wrap story-grid">
+    <div class="polaroid-wrap rv" data-parallax="0.06">
+      <div class="back-card" aria-hidden="true"></div>
+      <figure class="polaroid" style="margin:0">
+        <span class="tape" aria-hidden="true"></span>
+        <div class="ph" id="story-photo" role="img" aria-label="Illustration of the Blush Café corner: arched window, round table, pink chairs and a latte"></div>
+        <figcaption>our favourite corner</figcaption>
+      </figure>
+      <span class="hand-note n1">made with love ♡</span>
+      <span class="hand-note n2">your happy place</span>
+    </div>
+    <div class="story-copy">
+      <span class="eyebrow rv">since 2024 ♡</span>
+      <h2 class="h2 rv" id="story-title">A Little Story About Blush <span class="heart">♡</span></h2>
+      <p class="quote rv">Blush Café was created for slow mornings, long conversations and those little moments that deserve something sweet.</p>
+      <p class="more rv">We roast our beans in small batches, whisk our strawberry cream by hand and bake every cake before the doors open. The pink is on purpose too. We wanted a room that feels like a deep breath.</p>
+      <div class="stats rv">
+        <div class="stat"><b>18</b><span>handcrafted drinks</span></div>
+        <div class="stat"><b>7 AM</b><span>fresh bake, daily</span></div>
+        <div class="stat"><b>42</b><span>cozy seats</span></div>
+      </div>
+      <div class="story-sign rv"><span class="sig">with love, Blush</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAVORITES -->
+<section class="section favs" id="menu" aria-labelledby="favs-title">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow rv">what everyone orders</span>
+      <h2 class="h2 rv" id="favs-title">Blush Favorites <span class="heart">♡</span></h2>
+      <p class="lede rv">Our most-loved sips and bakes, made fresh and plated pretty. Tap the heart to save your favourites.</p>
+    </div>
+    <div class="cards" id="cards"></div>
+    <div class="favs-cta rv"><button class="btn" type="button" data-open="menu">View Full Menu <span class="arr" aria-hidden="true">→</span></button></div>
+  </div>
+</section>
+
+<!-- MOOD -->
+<section class="section mood" id="mood" aria-labelledby="mood-title">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow rv">can't decide?</span>
+      <h2 class="h2 rv" id="mood-title">Pick Your Mood <span class="heart">♡</span></h2>
+      <p class="lede rv">Tell us how you feel and we'll pick your order.</p>
+    </div>
+    <div class="mood-grid" id="mood-grid" role="group" aria-label="Moods"></div>
+    <div class="mood-result" id="mood-result" aria-live="polite"><span class="hand">hover or tap a mood ♡</span>We'll suggest the perfect order for it.</div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section gallery" id="gallery" aria-labelledby="gallery-title">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow rv">@blushcafe</span>
+      <h2 class="h2 rv" id="gallery-title">Pretty Little Moments</h2>
+      <p class="lede rv">Pink corners, latte art and plates that never last long. Tag us so we can share yours.</p>
+    </div>
+    <div class="masonry" id="masonry"></div>
+    <div class="insta rv"><span class="hand">share your sip with #BlushMoments</span><a class="btn btn-ghost" href="https://www.instagram.com/" target="_blank" rel="noopener">Follow on Instagram</a></div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="section why" id="why" aria-labelledby="why-title">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow rv">the little things</span>
+      <h2 class="h2 rv" id="why-title">Why You'll Love Blush <span class="heart">♡</span></h2>
+    </div>
+    <div class="why-grid">
+      <article class="why-card rv" style="--rd:0s">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 12h16v6a8 8 0 0 1-8 8h0a8 8 0 0 1-8-8z"/><path d="M22 14h2a3 3 0 0 1 0 6h-2.5"/><path d="M11 8c0-2 2-2 2-4M15 8c0-2 2-2 2-4"/></svg></div>
+        <h3><span>♡</span> Handcrafted Drinks</h3>
+        <p>Freshly made with love.</p>
+      </article>
+      <article class="why-card rv" style="--rd:.08s">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 20c0-6 5-10 11-10s11 4 11 10"/><path d="M4 20h24l-2 6H6z"/><path d="M11 14l2 6M16 12v8M21 14l-2 6"/></svg></div>
+        <h3><span>♡</span> Fresh Bakes</h3>
+        <p>Sweet treats baked every day.</p>
+      </article>
+      <article class="why-card rv" style="--rd:.16s">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M7 16v-4a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v4"/><path d="M4 18a2 2 0 0 1 4 0v2h16v-2a2 2 0 0 1 4 0v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M8 25v2M24 25v2"/></svg></div>
+        <h3><span>♡</span> Cozy Corners</h3>
+        <p>Made for conversations and coffee dates.</p>
+      </article>
+      <article class="why-card rv" style="--rd:.24s">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="4" y="9" width="24" height="17" rx="4"/><path d="M11 9l2-3h6l2 3"/><circle cx="16" cy="17.5" r="4.5"/><path d="M16 16.2c-.6-.8-2-.4-2 .5 0 .9 2 2 2 2s2-1.1 2-2c0-.9-1.4-1.3-2-.5z"/></svg></div>
+        <h3><span>♡</span> Picture Perfect</h3>
+        <p>Every corner deserves a photo.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section reviews" id="reviews" aria-labelledby="reviews-title">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow rv">love notes</span>
+      <h2 class="h2 rv" id="reviews-title">Sweet Words From Sweet People <span class="heart">♡</span></h2>
+      <div class="rv"><span class="rv-rating"><b>4.9</b><span class="stars" aria-hidden="true">★★★★★</span><span>average from 1,200+ guests</span></span></div>
+    </div>
+  </div>
+  <div class="carousel" id="carousel" aria-label="Guest reviews" role="region">
+    <div class="rv-track" id="rv-track"></div>
+  </div>
+  <div class="carousel-ctrl"><button type="button" id="rv-toggle" aria-pressed="false">Pause reviews</button></div>
+</section>
+
+<!-- FEELING -->
+<section class="section feeling" id="feeling" aria-labelledby="feel-title">
+  <div class="floaters" aria-hidden="true" id="feel-floaters"></div>
+  <div class="wrap">
+    <span class="eyebrow rv" style="color:var(--choc)">a little check-in</span>
+    <h2 class="h2 rv" id="feel-title">How are you feeling today?</h2>
+    <div class="feel-btns rv">
+      <button class="feel-btn" type="button" data-feel="coffee"><span aria-hidden="true">☕</span>Coffee Please</button>
+      <button class="feel-btn" type="button" data-feel="dessert"><span aria-hidden="true">🍰</span>Dessert First</button>
+      <button class="feel-btn" type="button" data-feel="date"><span aria-hidden="true">💕</span>Date Mood</button>
+      <button class="feel-btn" type="button" data-feel="vibe"><span aria-hidden="true">🌸</span>Just Vibing</button>
+    </div>
+    <p class="feel-msg" id="feel-msg" aria-live="polite">pick one, we're listening ♡</p>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="section visit" id="visit" aria-labelledby="visit-title">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow rv">find us</span>
+      <h2 class="h2 rv" id="visit-title">Come Say Hi <span class="heart">♡</span></h2>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-card rv">
+        <span class="brand">Blush Café</span>
+        <div class="info-row">
+          <span class="ii" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+          <div><b>Address</b><span class="val">12 Blossom Lane, Rose Garden Road, Your City 000000</span></div>
+        </div>
+        <div class="info-row">
+          <span class="ii" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div><b>Opening Hours</b><span class="val">Monday – Sunday · 9:00 AM – 11:00 PM <span class="open-now" id="open-now"><i></i><span>Open now</span></span></span></div>
+        </div>
+        <div class="info-row">
+          <span class="ii" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
+          <div><b>Phone</b><span class="val"><span id="phone">+91 00000 00000</span><button class="copy" type="button" data-copy="phone">Copy</button></span></div>
+        </div>
+        <div class="info-row">
+          <span class="ii" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg></span>
+          <div><b>Email</b><span class="val"><span id="email">hello@blushcafe.in</span><button class="copy" type="button" data-copy="email">Copy</button></span></div>
+        </div>
+        <div class="visit-ctas">
+          <a class="btn btn-pink" href="https://www.google.com/maps/search/?api=1&amp;query=Blush+Cafe" target="_blank" rel="noopener" id="directions">Get Directions <span class="arr" aria-hidden="true">→</span></a>
+          <button class="btn" type="button" data-open="reserve">Reserve a Table</button>
+        </div>
+      </div>
+      <div class="map-frame rv" style="--rd:.1s">
+        <div class="map" role="img" aria-label="Map placeholder showing Blush Café's location">
+          <span class="map-label">♡ Blush Café is right here</span>
+          <svg viewBox="0 0 600 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="600" height="420" fill="#FFF6F4"/>
+            <path d="M-20 300 C120 260 200 330 330 280 S520 200 640 230" fill="none" stroke="#FADADD" stroke-width="46"/>
+            <path d="M-20 300 C120 260 200 330 330 280 S520 200 640 230" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="10 12"/>
+            <path d="M180 -20 C200 120 150 240 210 440" fill="none" stroke="#F8C8DC" stroke-width="30"/>
+            <path d="M420 -20 L460 440" fill="none" stroke="#FADADD" stroke-width="22"/>
+            <path d="M-20 110 L640 70" fill="none" stroke="#FADADD" stroke-width="18"/>
+            <ellipse cx="500" cy="340" rx="80" ry="52" fill="#E6F0DD"/>
+            <ellipse cx="80" cy="170" rx="54" ry="40" fill="#E6F0DD"/>
+            <circle cx="490" cy="330" r="10" fill="#C9DDB7"/><circle cx="520" cy="350" r="8" fill="#C9DDB7"/><circle cx="470" cy="352" r="7" fill="#C9DDB7"/>
+            <g fill="#fff" stroke="#F4B6C2" stroke-width="2">
+              <rect x="240" y="120" width="70" height="46" rx="10"/><rect x="330" y="140" width="56" height="40" rx="10"/>
+              <rect x="240" y="190" width="54" height="40" rx="10"/><rect x="480" y="120" width="70" height="60" rx="10"/>
+              <rect x="40" y="330" width="90" height="50" rx="10"/><rect x="270" y="330" width="70" height="50" rx="10"/>
+            </g>
+            <circle class="pin-pulse" cx="318" cy="238" r="22" fill="#E2557B" opacity=".4"/>
+            <path d="M318 262s-26-20-26-40a26 26 0 0 1 52 0c0 20-26 40-26 40z" fill="#E2557B"/>
+            <path d="M318 232s-9-5.5-9-11c0-3 2.4-5 5-5 1.8 0 3.2 1 4 2.3.8-1.3 2.2-2.3 4-2.3 2.6 0 5 2 5 5 0 5.5-9 11-9 11z" fill="#fff"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="news" aria-labelledby="news-title">
+  <div class="wrap">
+    <div class="news-card rv">
+      <span class="deco" style="left:6%;top:14%" aria-hidden="true">♡</span>
+      <span class="deco" style="right:8%;top:22%;animation-delay:-3s" aria-hidden="true">✿</span>
+      <span class="deco" style="left:12%;bottom:12%;animation-delay:-6s;font-size:1.4rem" aria-hidden="true">✦</span>
+      <span class="deco" style="right:14%;bottom:16%;animation-delay:-2s;font-size:1.5rem" aria-hidden="true">🍒</span>
+      <span class="eyebrow">the blush club</span>
+      <h2 class="h2" id="news-title">A Little Blush in Your Inbox <span class="heart">♡</span></h2>
+      <p>Sweet updates, new treats &amp; café stories — straight to your inbox.</p>
+      <form class="news-form" id="news-form" novalidate>
+        <label for="news-email" class="sr-only">Email address</label>
+        <input id="news-email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+        <button class="btn" type="submit">Join the Blush Club ♡</button>
+      </form>
+      <p class="news-status" id="news-status" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.2 3 4.5 6.6 4.5c2.2 0 3.7 1.3 4.6 2.8h1.6c.9-1.5 2.4-2.8 4.6-2.8 3.6 0 5.7 3.7 4.2 7.2C19.5 16.4 12 21 12 21z" fill="#E2557B"/></svg>Blush Café</a>
+        <p class="tag">Coffee, cakes &amp; a little bit of blush.</p>
+      </div>
+      <nav aria-label="Footer">
+        <ul class="foot-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#visit">Contact</a></li>
+          <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-bottom">
+      <span class="made">Made with <span>♡</span> &amp; lots of coffee</span>
+      <span>© 2026 Blush Café · All sweet things reserved</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Reserve modal -->
+<div class="modal" id="modal-reserve" role="dialog" aria-modal="true" aria-labelledby="reserve-title" hidden>
+  <div class="modal-box">
+    <button class="modal-close" type="button" data-close aria-label="Close">×</button>
+    <div id="reserve-body">
+      <span class="eyebrow">save me a seat ♡</span>
+      <h2 id="reserve-title">Reserve a Table</h2>
+      <p class="hint">Pick a time and we'll keep a cozy corner ready for you.</p>
+      <!-- Booking hook: replace handleReservation() in the script with your booking system call. -->
+      <form class="form" id="reserve-form" novalidate>
+        <div class="field"><label for="r-name">Name</label><input id="r-name" name="name" autocomplete="name" required><span class="err" id="r-name-err"></span></div>
+        <div class="field"><label for="r-phone">Phone</label><input id="r-phone" name="phone" type="tel" autocomplete="tel" required><span class="err" id="r-phone-err"></span></div>
+        <div class="field"><label for="r-date">Date</label><input id="r-date" name="date" type="date" required><span class="err" id="r-date-err"></span></div>
+        <div class="field"><label for="r-time">Time</label><select id="r-time" name="time" required></select><span class="err"></span></div>
+        <div class="field"><label for="r-guests">Guests</label><select id="r-guests" name="guests"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7+</option></select></div>
+        <div class="field"><label for="r-seat">Seating</label><select id="r-seat" name="seat"><option>Any cozy spot</option><option>Window arch</option><option>Pink booth</option><option>Garden patio</option></select></div>
+        <div class="field full"><label for="r-note">Special note <span style="font-weight:500;color:var(--choc-3)">(optional)</span></label><textarea id="r-note" name="note" placeholder="Birthday, anniversary, a surprise..."></textarea></div>
+        <button class="btn" type="submit">Request my table ♡</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Menu modal -->
+<div class="modal" id="modal-menu" role="dialog" aria-modal="true" aria-labelledby="menu-title" hidden>
+  <div class="modal-box wide">
+    <button class="modal-close" type="button" data-close aria-label="Close">×</button>
+    <span class="eyebrow">all the sweet things</span>
+    <h2 id="menu-title">The Blush Menu</h2>
+    <div class="menu-cats" id="menu-cats"></div>
+    <p class="menu-note">All prices in ₹, inclusive of taxes. Oat, almond and soy milk available on request.</p>
+    <div style="display:flex;justify-content:center;margin-top:18px"><button class="btn btn-pink" type="button" data-open="reserve">Reserve a Table</button></div>
+  </div>
+</div>
+
+<script>
+(function(){
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = (s,c=document)=>c.querySelector(s);
+const $$ = (s,c=document)=>[...c.querySelectorAll(s)];
+
+/* ================= Illustration kit ================= */
+const P={choc:'#6B4545',berry:'#E2557B',rose:'#F4B6C2',blush:'#F8C8DC',baby:'#FADADD',cream:'#FFF8F3',white:'#FFFCFA',leaf:'#8DB889',gold:'#E9B071',goldD:'#C98A4F'};
+let uid=0;
+const bg=(a,b)=>{const id='g'+(uid++);return {id,def:`<radialGradient id="${id}" cx="30%" cy="25%" r="90%"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></radialGradient>`}};
+const berry=(x,y,s=1,r=0)=>`<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})"><path d="M0-11C13-13 17 0 10 11 6 17-6 17-10 11-17 0-13-13 0-11Z" fill="${P.berry}"/><g fill="#FFE1E9"><ellipse cx="-4" cy="-2" rx="1" ry="1.6"/><ellipse cx="4" cy="-3" rx="1" ry="1.6"/><ellipse cx="0" cy="4" rx="1" ry="1.6"/><ellipse cx="-5" cy="7" rx="1" ry="1.6"/><ellipse cx="5" cy="6" rx="1" ry="1.6"/></g><path d="M-9-12 0-7 9-12 4-15 0-11-4-15Z" fill="${P.leaf}"/></g>`;
+const heartP=(x,y,s=1,f=P.berry)=>`<path transform="translate(${x} ${y}) scale(${s})" d="M0 6S-7 1.8-7-2.6C-7-5-5.2-6.5-3.4-6.5-1.8-6.5-.6-5.6 0-4.4.6-5.6 1.8-6.5 3.4-6.5 5.2-6.5 7-5 7-2.6 7 1.8 0 6 0 6Z" fill="${f}"/>`;
+const sparkle=(x,y,s=1,f='#fff')=>`<path transform="translate(${x} ${y}) scale(${s})" d="M0-8C1-2 2-1 8 0 2 1 1 2 0 8-1 2-2 1-8 0-2-1-1-2 0-8Z" fill="${f}"/>`;
+const wrapSvg=(inner,defs='',vb='0 0 200 200',bgc)=>`<svg viewBox="${vb}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice"><defs>${defs}</defs>${inner}</svg>`;
+
+function glass({bottom,mid,top,garnish='berry',ice=true,straw=P.rose}){
+  return `<ellipse cx="100" cy="184" rx="52" ry="7" fill="${P.berry}" opacity=".12"/>
+  <rect x="113" y="14" width="9" height="84" rx="4.5" fill="${straw}" transform="rotate(14 117 56)"/>
+  <path d="M66.8 112 72 176Q73 181 80 181H120Q127 181 128 176L133.2 112Z" fill="${bottom}"/>
+  <path d="M64.4 82 66.8 112Q84 106 100 112T133.2 112L135.6 82Z" fill="${mid}"/>
+  ${ice?`<rect x="76" y="86" width="20" height="18" rx="4" fill="#fff" opacity=".45" transform="rotate(-10 86 95)"/><rect x="104" y="92" width="18" height="17" rx="4" fill="#fff" opacity=".4" transform="rotate(12 113 100)"/>`:''}
+  <path d="M62.6 60 64.4 82Q82 76 100 82T135.6 82L137.4 60Z" fill="${top}"/>
+  <path d="M60 58C58 44 76 40 84 46 88 34 110 34 114 46 124 40 142 46 140 58Z" fill="${top}"/>
+  <path d="M62 50 72 176Q73 182 80 182H120Q127 182 128 176L138 50" fill="none" stroke="#fff" stroke-width="3" opacity=".9"/>
+  <rect x="70" y="92" width="5" height="70" rx="2.5" fill="#fff" opacity=".45"/>
+  ${garnish==='berry'?berry(122,44,1.25,18):''}
+  ${garnish==='rose'?`<g transform="translate(118 44)"><circle r="12" fill="${P.berry}"/><circle r="8" fill="#F07FA0"/><circle r="4" fill="${P.berry}"/></g>`:''}
+  ${garnish==='lemon'?`<g transform="translate(130 58)"><circle r="17" fill="#F6D77A"/><circle r="13" fill="#FBE9A6"/><path d="M0-13V13M-13 0H13M-9-9 9 9M9-9-9 9" stroke="#F6D77A" stroke-width="1.6"/></g>`:''}
+  ${sparkle(46,70,1)}${sparkle(152,120,.7)}`;
+}
+function cup({body=P.rose,coffee='#C89A86',rose=false}){
+  return `<ellipse cx="100" cy="166" rx="72" ry="13" fill="${P.berry}" opacity=".1"/>
+  <ellipse cx="100" cy="160" rx="70" ry="13" fill="#fff"/><ellipse cx="100" cy="158" rx="54" ry="8" fill="${P.baby}"/>
+  <path d="M146 102c24-2 26 30-4 34" fill="none" stroke="${body}" stroke-width="10" stroke-linecap="round"/>
+  <path d="M52 92H148Q147 148 118 158H82Q53 148 52 92Z" fill="${body}"/>
+  <path d="M60 100Q62 138 84 150" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".5"/>
+  <ellipse cx="100" cy="92" rx="48" ry="12" fill="#fff"/><ellipse cx="100" cy="93" rx="42" ry="9" fill="${coffee}"/>
+  <path d="M100 100S86 92 86 86C86 82.5 89 80.5 92 80.5 95 80.5 98 83 100 86 102 83 105 80.5 108 80.5 111 80.5 114 82.5 114 86 114 92 100 100 100 100Z" fill="${P.cream}" transform="translate(0 2) scale(1 .7) translate(0 40)"/>
+  ${rose?`<ellipse cx="80" cy="90" rx="4" ry="2" fill="${P.berry}" transform="rotate(20 80 90)"/><ellipse cx="120" cy="94" rx="4" ry="2" fill="${P.berry}" transform="rotate(-30 120 94)"/>`:''}
+  <path d="M84 70c-8-10 8-14 0-26M100 66c-8-10 8-14 0-26M116 70c-8-10 8-14 0-26" fill="none" stroke="${P.rose}" stroke-width="3.5" stroke-linecap="round" opacity=".9"/>`;
+}
+function pancakes(){
+  const pc=(y)=>`<path d="M44 ${y}Q44 ${y-12} 100 ${y-12}T156 ${y}V${y+10}Q156 ${y+22} 100 ${y+22}T44 ${y+10}Z" fill="${P.gold}"/><ellipse cx="100" cy="${y}" rx="56" ry="12" fill="#F7C99B"/>`;
+  return `<ellipse cx="100" cy="168" rx="80" ry="15" fill="#fff"/><ellipse cx="100" cy="166" rx="64" ry="10" fill="${P.baby}"/>
+  ${pc(146)}${pc(126)}${pc(106)}${pc(86)}
+  <path d="M50 84Q52 72 100 72T150 84C150 92 144 94 142 104 140 110 136 104 136 96 132 92 118 98 116 110 114 118 108 114 108 104 100 96 90 100 86 108 84 114 78 112 78 102 70 94 60 98 58 106 56 110 52 106 50 84Z" fill="${P.berry}" opacity=".92"/>
+  <path d="M72 80Q100 70 130 80" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+  <circle cx="100" cy="66" r="12" fill="${P.cream}"/><circle cx="92" cy="62" r="8" fill="#fff"/>
+  ${berry(114,58,1.1,20)}${berry(84,70,.8,-25)}${sparkle(160,60,.8,P.white)}`;
+}
+function waffle(){
+  let grid='';for(let i=1;i<5;i++){grid+=`<path d="M${52+i*19} 62V160" stroke="${P.goldD}" stroke-width="4" opacity=".6"/><path d="M52 ${62+i*19.6}H148" stroke="${P.goldD}" stroke-width="4" opacity=".6"/>`;}
+  return `<ellipse cx="100" cy="168" rx="82" ry="15" fill="#fff"/>
+  <g transform="rotate(-8 100 110)"><rect x="52" y="62" width="96" height="98" rx="16" fill="${P.gold}"/>${grid}
+  <path d="M60 70Q90 60 120 74 140 84 138 100 130 96 128 108 120 100 110 112 104 100 90 104 86 94 74 98 72 86 60 90Z" fill="${P.berry}" opacity=".9"/></g>
+  <circle cx="92" cy="80" r="11" fill="${P.cream}"/><circle cx="86" cy="76" r="7" fill="#fff"/>
+  ${berry(110,76,1,10)}${berry(126,96,.8,-20)}
+  <g fill="#C7345E"><circle cx="70" cy="126" r="6"/><circle cx="78" cy="132" r="6"/><circle cx="68" cy="136" r="6"/></g>
+  <g fill="#fff" opacity=".9"><circle cx="120" cy="130" r="1.6"/><circle cx="130" cy="122" r="1.4"/><circle cx="96" cy="140" r="1.5"/><circle cx="110" cy="146" r="1.4"/></g>`;
+}
+function cheesecake(){
+  return `<ellipse cx="104" cy="170" rx="84" ry="14" fill="#fff"/><ellipse cx="104" cy="168" rx="66" ry="9" fill="${P.baby}"/>
+  <path d="M34 104 54 128V166L34 146Z" fill="#F3E1D6"/>
+  <path d="M54 128 170 96V136L54 166Z" fill="${P.cream}"/>
+  <path d="M54 154 170 124V136L54 166Z" fill="#D9A57B"/>
+  <path d="M34 104 150 72 170 96 54 128Z" fill="${P.rose}"/>
+  <path d="M54 128 170 96V104C166 110 164 102 160 110 156 118 152 106 148 112 146 120 140 110 136 118 130 128 126 116 122 122 118 132 110 122 104 132 100 140 94 128 88 136 84 142 78 134 74 140 70 146 64 138 60 142 56 146 54 138 54 128Z" fill="${P.berry}" opacity=".9"/>
+  ${berry(112,84,1.3,-8)}${berry(138,78,.9,20)}
+  <circle cx="84" cy="94" r="6" fill="#fff"/>${sparkle(40,70,.9,P.white)}`;
+}
+function croissant(){
+  const seg=(cx,cy,rx,ry,r,f)=>`<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${f}" transform="rotate(${r} ${cx} ${cy})"/>`;
+  return `<ellipse cx="100" cy="160" rx="80" ry="14" fill="#fff"/>
+  ${seg(46,126,16,11,-40,P.goldD)}${seg(154,126,16,11,40,P.goldD)}
+  ${seg(64,108,22,17,-30,P.gold)}${seg(136,108,22,17,30,P.gold)}
+  ${seg(100,98,30,24,0,'#F2BE82')}
+  <path d="M84 80Q100 108 116 80M66 94Q74 112 90 112M134 94Q126 112 110 112" fill="none" stroke="${P.goldD}" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+  <path d="M48 110 64 96 76 116 92 90 104 118 116 90 128 116 140 96 154 110" fill="none" stroke="${P.choc}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="${P.rose}"><rect x="84" y="78" width="3" height="7" rx="1.5" transform="rotate(20 85 81)"/><rect x="110" y="82" width="3" height="7" rx="1.5" transform="rotate(-30 111 85)"/><rect x="98" y="72" width="3" height="7" rx="1.5"/></g>
+  ${sparkle(160,64,.9,P.white)}`;
+}
+function lemonade(){
+  return `<ellipse cx="100" cy="184" rx="50" ry="7" fill="${P.berry}" opacity=".12"/>
+  <rect x="110" y="16" width="9" height="80" rx="4.5" fill="${P.white}" stroke="${P.rose}" stroke-width="2" transform="rotate(12 114 56)"/>
+  <path d="M60 64H140V168Q140 182 126 182H74Q60 182 60 168Z" fill="#fff" opacity=".6"/>
+  <path d="M62 84H138V167Q138 180 125 180H75Q62 180 62 167Z" fill="${P.rose}"/>
+  <path d="M62 84Q80 78 100 84T138 84V96Q120 90 100 96T62 96Z" fill="${P.blush}"/>
+  <rect x="72" y="104" width="22" height="20" rx="5" fill="#fff" opacity=".45" transform="rotate(-8 83 114)"/><rect x="104" y="120" width="20" height="18" rx="5" fill="#fff" opacity=".4" transform="rotate(10 114 129)"/>
+  <rect x="56" y="54" width="88" height="14" rx="5" fill="#fff" stroke="${P.rose}" stroke-width="2"/>
+  <path d="M60 70V168" stroke="#fff" stroke-width="3" opacity=".7"/><rect x="70" y="100" width="5" height="64" rx="2.5" fill="#fff" opacity=".5"/>
+  <g transform="translate(62 62)"><circle r="17" fill="#F6D77A"/><circle r="13" fill="#FBE9A6"/><path d="M0-13V13M-13 0H13M-9-9 9 9M9-9-9 9" stroke="#F6D77A" stroke-width="1.6"/></g>
+  ${berry(98,150,.9,15)}${sparkle(154,90,.9)}${sparkle(44,120,.6)}`;
+}
+function interior(){
+  return `<rect width="200" height="200" fill="${P.baby}"/><rect y="150" width="200" height="50" fill="${P.blush}"/>
+  <path d="M40 150V70A30 30 0 0 1 100 70V150Z" fill="#FFF6F4" stroke="#fff" stroke-width="5"/>
+  <path d="M70 42V150M40 100H100" stroke="#fff" stroke-width="3"/>
+  <circle cx="84" cy="66" r="10" fill="#FFE9B8" opacity=".8"/>
+  <path d="M150 0V30" stroke="${P.choc}" stroke-width="1.5"/><path d="M136 44Q136 30 150 30T164 44Z" fill="${P.rose}"/><circle cx="150" cy="48" r="4" fill="#FFE9B8"/>
+  <path d="M112 112H176" stroke="${P.choc}" stroke-width="0" />
+  <g><path d="M108 150V124Q108 110 122 110H132Q146 110 146 124V150" fill="${P.rose}"/><rect x="104" y="134" width="46" height="10" rx="5" fill="#EFA2B3"/></g>
+  <ellipse cx="160" cy="128" rx="30" ry="7" fill="#fff"/><rect x="157" y="128" width="6" height="30" fill="#fff"/><ellipse cx="160" cy="160" rx="16" ry="4" fill="#fff"/>
+  <path d="M150 116H164V124Q164 128 157 128 150 128 150 124Z" fill="${P.berry}"/><path d="M164 118Q170 118 168 123" fill="none" stroke="${P.berry}" stroke-width="2"/>
+  <path d="M168 120Q170 112 180 112 188 112 186 122Z" fill="#F7C99B"/>
+  <g transform="translate(22 150)"><path d="M-10 0H10L8 22H-8Z" fill="#fff"/><path d="M0 0C-4-16-18-20-20-30M0 0C2-18 12-26 8-40M0 0C6-10 18-12 22-22M0 0C-8-6-14-4-20-12" stroke="${P.leaf}" stroke-width="5" fill="none" stroke-linecap="round"/></g>
+  ${heartP(122,90,1.4)}${sparkle(176,82,.8)}`;
+}
+function cheers(){
+  const c=(tx,r,col)=>`<g transform="translate(${tx} 110) rotate(${r})"><path d="M-26-24H26Q25 14 10 22H-10Q-25 14-26-24Z" fill="${col}"/><ellipse cy="-24" rx="26" ry="7" fill="#fff"/><ellipse cy="-23" rx="22" ry="5" fill="#C89A86"/>${heartP(0,-24,.9,P.cream)}<path d="M26-14c14 0 14 20-2 22" fill="none" stroke="${col}" stroke-width="6" stroke-linecap="round"/></g>`;
+  return `${c(70,-14,P.rose)}${c(130,14,'#fff')}
+  ${heartP(100,52,2)}${heartP(78,40,1)}${heartP(124,36,1.2,P.rose)}${sparkle(100,80,1.1)}
+  <ellipse cx="100" cy="164" rx="70" ry="8" fill="${P.berry}" opacity=".1"/>`;
+}
+function flowers(){
+  const fl=(x,y,c,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})">${[0,72,144,216,288].map(a=>`<ellipse cx="0" cy="-8" rx="6" ry="9" fill="${c}" transform="rotate(${a})"/>`).join('')}<circle r="4.5" fill="#FBE9A6"/></g>`;
+  return `<path d="M88 100Q70 70 72 50M100 100V40M112 100Q130 72 132 56M94 100Q86 80 90 66" stroke="${P.leaf}" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <ellipse cx="80" cy="76" rx="10" ry="5" fill="${P.leaf}" transform="rotate(-40 80 76)"/><ellipse cx="120" cy="80" rx="10" ry="5" fill="${P.leaf}" transform="rotate(40 120 80)"/>
+  ${fl(72,48,P.berry,1.1)}${fl(100,36,P.rose,1.25)}${fl(132,54,'#fff',1.05)}${fl(90,64,P.blush,.8)}
+  <path d="M80 98H120L114 160Q113 166 106 166H94Q87 166 86 160Z" fill="#fff" opacity=".85"/><path d="M84 120H116" stroke="${P.rose}" stroke-width="3"/>
+  <g transform="translate(150 150) scale(.45)"><path d="M-60 0-20 30V70L-60 40Z" fill="#F3E1D6"/><path d="M-20 30 80 0V40L-20 70Z" fill="${P.cream}"/><path d="M-20 60 80 30V40L-20 70Z" fill="#D9A57B"/><path d="M-60 0 40-28 80 0-20 30Z" fill="${P.rose}"/>${berry(20,-8,2)}</g>`;
+}
+function tableTop(){
+  return `<rect width="200" height="200" fill="${P.blush}"/>
+  <circle cx="100" cy="100" r="86" fill="#fff"/><circle cx="100" cy="100" r="86" fill="none" stroke="${P.rose}" stroke-width="4" stroke-dasharray="2 8" stroke-linecap="round"/>
+  <g transform="translate(64 70)"><circle r="24" fill="${P.baby}"/><circle r="17" fill="#C89A86"/>${heartP(0,1,1.6,P.cream)}<path d="M22 0h10" stroke="${P.baby}" stroke-width="6" stroke-linecap="round"/></g>
+  <g transform="translate(138 132)"><circle r="24" fill="${P.rose}"/><circle r="17" fill="#C89A86"/>${heartP(0,1,1.6,P.cream)}<path d="M-22 0h-10" stroke="${P.rose}" stroke-width="6" stroke-linecap="round"/></g>
+  <g transform="translate(128 66)"><circle r="26" fill="${P.cream}" stroke="${P.baby}" stroke-width="3"/><path d="M-14 8 0-14 14 8Z" fill="${P.rose}"/><path d="M-14 8H14V14H-14Z" fill="#D9A57B"/>${berry(0,-4,.6)}</g>
+  <g transform="translate(66 138)">${[0,72,144,216,288].map(a=>`<ellipse cx="0" cy="-7" rx="5" ry="8" fill="${P.berry}" transform="rotate(${a})"/>`).join('')}<circle r="4" fill="#FBE9A6"/></g>
+  ${sparkle(30,30,.8,P.white)}${sparkle(176,180,.7,P.white)}`;
+}
+function heroScene(){
+  const g=bg('#FFFDFB',P.baby);
+  return wrapSvg(`<rect width="400" height="500" fill="url(#${g.id})"/>
+  <circle cx="200" cy="210" r="150" fill="${P.blush}" opacity=".45"/>
+  <g transform="translate(90 70) scale(1.55)">${glass({bottom:P.berry,mid:P.blush,top:'#fff',garnish:'berry'})}</g>
+  <g transform="translate(40 318) scale(.95)">${cheesecake()}</g>
+  <g transform="translate(236 342) scale(.72)">${cup({body:'#fff',coffee:'#D9A393',rose:true})}</g>
+  ${heartP(330,110,2.2,P.rose)}${heartP(60,150,1.6,P.berry)}${sparkle(80,60,1.5)}${sparkle(320,250,1.2)}${sparkle(350,40,1)}`,g.def,'0 0 400 500');
+}
+
+/* ================= Content ================= */
+const products=[
+ {n:'Strawberry Cloud Latte',t:'house favourite',d:'Fresh strawberry purée, espresso and a whipped vanilla cloud.',p:280,bg:[P.white,P.baby],art:()=>glass({bottom:P.berry,mid:P.blush,top:'#fff'})},
+ {n:'Rose Vanilla Latte',t:'floral & warm',d:'Silky espresso with Madagascar vanilla and a whisper of rose.',p:260,bg:['#FFF3F5',P.blush],art:()=>cup({body:'#fff',coffee:'#D9A393',rose:true})},
+ {n:'Pink Velvet Pancakes',t:'brunch hero',d:'Fluffy stack, strawberry glaze, mascarpone and fresh berries.',p:340,bg:[P.cream,P.rose],art:pancakes},
+ {n:'Berry Bliss Waffles',t:'crispy & sweet',d:'Golden Belgian waffle with raspberry coulis and cream.',p:320,bg:['#FFF7F0',P.baby],art:waffle},
+ {n:'Blush Cheesecake',t:'baked every morning',d:'Baked vanilla cheesecake with a glossy strawberry top.',p:290,bg:[P.white,P.blush],art:cheesecake},
+ {n:'Strawberry Matcha',t:'pretty in layers',d:'Ceremonial matcha over oat milk and crushed strawberries.',p:300,bg:['#F7FBF2',P.baby],art:()=>glass({bottom:P.berry,mid:'#fff',top:'#A9CC8F'})},
+ {n:'Chocolate Croissant',t:'flaky & buttery',d:'Laminated butter croissant with dark chocolate drizzle.',p:180,bg:[P.cream,P.blush],art:croissant},
+ {n:'Pink Lemonade',t:'ice cold',d:'Hand-squeezed lemons, strawberry and a little sparkle.',p:190,bg:['#FFFBEA',P.baby],art:lemonade},
+];
+const heartSvg='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5S3.8 15.6 3.1 10.1C2.7 6.9 4.9 4.5 7.6 4.5c1.9 0 3.4 1.1 4.4 2.6 1-1.5 2.5-2.6 4.4-2.6 2.7 0 4.9 2.4 4.5 5.6-.7 5.5-8.9 10.4-8.9 10.4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>';
+let savedFavs=[];try{savedFavs=JSON.parse(localStorage.getItem('blushFavs')||'[]')}catch(e){}
+$('#cards').innerHTML=products.map((p,i)=>{
+  const g=bg(p.bg[0],p.bg[1]);
+  const on=savedFavs.includes(i);
+  return `<article class="card rv" style="--rd:${(i%4)*.07}s">
+    <div class="card-img" role="img" aria-label="Illustration of ${p.n}">${wrapSvg(`<rect width="200" height="200" fill="url(#${g.id})"/>${p.art()}`,g.def)}</div>
+    <button class="fav" type="button" aria-pressed="${on}" aria-label="Save ${p.n} to favourites" data-i="${i}">${heartSvg}</button>
+    <div class="card-body"><span class="card-tag">${p.t}</span><h3>${p.n}</h3><p>${p.d}</p>
+    <div class="card-foot"><span class="price">₹${p.p}</span><span class="kcal">♡ made to order</span></div></div></article>`;
+}).join('');
+
+$('#hero-arch').innerHTML=heroScene();
+$('#story-photo').innerHTML=wrapSvg(interior());
+
+const gallery=[
+ {c:'the window arch',h:260,art:interior,bg:[P.baby,P.baby]},
+ {c:'latte art, always ♡',h:200,art:()=>cup({body:P.rose}),bg:[P.white,P.blush]},
+ {c:'strawberry everything',h:250,art:()=>glass({bottom:P.berry,mid:P.blush,top:'#fff'}),bg:[P.cream,P.rose]},
+ {c:'fresh from the oven',h:190,art:croissant,bg:['#FFF7F0',P.baby]},
+ {c:'the famous slice',h:230,art:cheesecake,bg:[P.white,P.baby]},
+ {c:'coffee dates',h:210,art:cheers,bg:[P.baby,P.rose]},
+ {c:'table for two',h:200,art:tableTop,bg:[P.blush,P.blush]},
+ {c:'flowers & dessert',h:250,art:flowers,bg:[P.cream,P.blush]},
+];
+$('#masonry').innerHTML=gallery.map((g,i)=>{
+  const b=bg(g.bg[0],g.bg[1]);
+  const fig=`<figure class="g-item rv" style="--rd:${(i%4)*.06}s">${wrapSvg(`<rect width="200" height="${g.h}" fill="url(#${b.id})"/><g transform="translate(0 ${(g.h-200)/2})">${g.art()}</g>`,b.def,`0 0 200 ${g.h}`)}<figcaption>${g.c}</figcaption></figure>`;
+  return (i===2||i===5)?fig+'<div class="g-heart" aria-hidden="true"><span>♡</span><span>♡</span><span>♡</span></div>':fig;
+}).join('');
+
+const moods=[
+ {e:'☕',n:'Need Coffee',s:'wake me up, gently',pick:'Rose Vanilla Latte',why:'Smooth espresso with vanilla. Your morning hug in a cup.'},
+ {e:'🍰',n:'Feeling Sweet',s:'dessert is self-care',pick:'Blush Cheesecake',why:'Baked every morning, gone by evening. Get yours early.'},
+ {e:'🥐',n:'Brunch Mood',s:'slow & hungry',pick:'Pink Velvet Pancakes + Chocolate Croissant',why:'Share them, or don\'t. We won\'t tell.'},
+ {e:'🍓',n:'Something Pink',s:'the prettier, the better',pick:'Strawberry Cloud Latte',why:'Our most photographed drink. Camera ready.'},
+];
+$('#mood-grid').innerHTML=moods.map((m,i)=>`<button class="mood-tile rv" style="--rd:${i*.07}s" type="button" aria-pressed="false" data-m="${i}"><span class="ic" aria-hidden="true">${m.e}</span><b>${m.n}</b><small>${m.s}</small></button>`).join('');
+const moodRes=$('#mood-result');
+const showMood=(i,press)=>{const m=moods[i];moodRes.innerHTML=`<span class="hand">our pick for you ♡</span><b>${m.pick}</b><br>${m.why}`;if(press){$$('.mood-tile').forEach(t=>t.setAttribute('aria-pressed',t.dataset.m==i));}};
+$$('.mood-tile').forEach(t=>{t.addEventListener('mouseenter',()=>showMood(t.dataset.m));t.addEventListener('focus',()=>showMood(t.dataset.m));t.addEventListener('click',e=>{showMood(t.dataset.m,true);burst(e.clientX||t.getBoundingClientRect().left+t.offsetWidth/2,e.clientY||t.getBoundingClientRect().top,['♡','✦'],10)})});
+
+const reviews=[
+ {q:'The prettiest café ever! The strawberry latte was amazing and every corner was Instagram-worthy.',n:'Riya',w:'Brunch regular'},
+ {q:'The perfect place for coffee dates. Cozy, peaceful and absolutely adorable.',n:'Aanya',w:'Coffee date'},
+ {q:'The cheesecake is unreal. Creamy, light and not too sweet. I ordered a second slice to take home.',n:'Meera',w:'Dessert lover'},
+ {q:'I come here to work on Sundays. Great Wi-Fi, soft music and the rose latte keeps me going.',n:'Kabir',w:'Weekend visitor'},
+ {q:'Celebrated my sister\'s birthday here and the team added little hearts to every plate. So sweet!',n:'Ishita',w:'Birthday brunch'},
+ {q:'Those pink velvet pancakes are the fluffiest I\'ve had. The staff are lovely too.',n:'Tara',w:'First visit'},
+];
+const rvHtml=reviews.map(r=>`<article class="review"><span class="stars" aria-label="5 out of 5 stars">★★★★★</span><q>${r.q}</q><footer><span class="avatar" aria-hidden="true">${r.n[0]}</span><span><b>${r.n}</b><small>${r.w}</small></span></footer></article>`).join('');
+$('#rv-track').innerHTML=rvHtml+rvHtml.replace(/<article class="review">/g,'<article class="review" aria-hidden="true">');
+const rvBtn=$('#rv-toggle');
+rvBtn.addEventListener('click',()=>{const p=$('#carousel').classList.toggle('paused');rvBtn.setAttribute('aria-pressed',p);rvBtn.textContent=p?'Play reviews':'Pause reviews'});
+
+const mqText='COFFEE <em>♡</em> CAKES <em>♡</em> BRUNCH <em>♡</em> SWEET MOMENTS <em>♡</em> GOOD VIBES <em>♡</em> BLUSH CAFÉ <em>♡</em> ';
+$('#mq1').innerHTML=`<span>${mqText.repeat(3)}</span><span>${mqText.repeat(3)}</span>`;
+const mq2='STRAWBERRY LATTES <em>✿</em> FRESH BAKES <em>✿</em> PINK CORNERS <em>✿</em> SLOW MORNINGS <em>✿</em> ';
+$('#mq2').innerHTML=`<span>${mq2.repeat(3)}</span><span>${mq2.repeat(3)}</span>`;
+
+const menu=[
+ {c:'Coffee Classics',i:[['Espresso','Double shot, house blend',140],['Cappuccino','Velvety microfoam',190],['Flat White','Ristretto & silky milk',210],['Rose Vanilla Latte','Vanilla bean & rose',260]]},
+ {c:'Blush Signatures',i:[['Strawberry Cloud Latte','Strawberry, espresso, vanilla cloud',280],['Strawberry Matcha','Ceremonial matcha, oat milk',300],['Pink Hot Chocolate','White chocolate & raspberry',240],['Lavender Honey Latte','Local honey, dried lavender',270]]},
+ {c:'Fresh Bakes',i:[['Chocolate Croissant','Butter croissant, dark chocolate',180],['Blush Cheesecake','Baked vanilla, strawberry top',290],['Pink Velvet Cupcake','Cream cheese frosting',160],['Strawberry Tart','Vanilla custard, fresh berries',240]]},
+ {c:'Brunch',i:[['Pink Velvet Pancakes','Strawberry glaze, mascarpone',340],['Berry Bliss Waffles','Raspberry coulis, cream',320],['Avocado Sourdough','Chilli flakes, microgreens',310],['Croissant Sandwich','Cheese, tomato, pesto',280]]},
+ {c:'Coolers',i:[['Pink Lemonade','Lemon, strawberry, sparkle',190],['Iced Rose Latte','Cold milk, espresso, rose',250],['Berry Smoothie','Mixed berries, yoghurt',230]]},
+];
+$('#menu-cats').innerHTML=menu.map(m=>`<div class="menu-cat"><h3>${m.c} ♡</h3>${m.i.map(([n,d,p])=>`<div class="menu-row"><span class="nm">${n}<span class="ds">${d}</span></span><span class="dots" aria-hidden="true"></span><span class="pr">₹${p}</span></div>`).join('')}</div>`).join('');
+
+/* reservation time options */
+const tSel=$('#r-time');for(let h=9;h<=22;h++){for(const m of ['00','30']){const hh=h>12?h-12:h;const ap=h>=12?'PM':'AM';const o=document.createElement('option');o.value=`${h}:${m}`;o.textContent=`${hh}:${m} ${ap}`;if(h===17&&m==='00')o.selected=true;tSel.appendChild(o);}}
+const today=new Date();const iso=d=>new Date(d.getTime()-d.getTimezoneOffset()*6e4).toISOString().slice(0,10);
+$('#r-date').min=iso(today);$('#r-date').value=iso(new Date(today.getTime()+864e5));
+
+/* open now status */
+const hr=today.getHours();const open=hr>=9&&hr<23;
+const on=$('#open-now');if(!open){on.classList.add('closed');on.lastElementChild.textContent='Opens 9 AM';$('#hero-status').textContent='Opening at 9 AM ♡';}
+
+/* ================= Floaters ================= */
+const doodle='<svg viewBox="0 0 24 24"><path d="M5 10h11v4a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5z M16 11h1.5a2.3 2.3 0 0 1 0 4.6H16 M9 6c0-1.5 1.5-1.5 1.5-3M12.5 6c0-1.5 1.5-1.5 1.5-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
+function floaters(el,n){
+  const items=['♡','✿','✦','🍒','doodle','♡','✦','✿'];let h='';
+  for(let i=0;i<n;i++){const it=items[i%items.length];const x=(i*37+11)%96,y=(i*53+7)%88;
+    h+=`<span class="fl${i%3===0?' soft':''}" style="left:${x}%;top:${y}%;--s:${12+(i*7)%16}px;--d:${11+(i*3)%9}s;--dl:-${(i*1.7)%10}s">${it==='doodle'?doodle:it}</span>`;}
+  el.innerHTML=h;
+}
+floaters($('#hero-floaters'),innerWidth<600?10:18);floaters($('#feel-floaters'),10);
+
+/* ================= Burst ================= */
+function burst(x,y,chars=['♡'],n=12){
+  if(reduce)return;
+  for(let i=0;i<n;i++){const s=document.createElement('span');s.className='burst';s.setAttribute('aria-hidden','true');s.textContent=chars[i%chars.length];
+    const a=Math.random()*Math.PI*2,d=50+Math.random()*90;
+    s.style.cssText=`--x0:${x}px;--y0:${y}px;--x1:${x+Math.cos(a)*d}px;--y1:${y+Math.sin(a)*d-50}px;--r:${(Math.random()*80-40)|0}deg;--fs:${14+Math.random()*14}px;color:${['#E2557B','#F4B6C2','#F07FA0','#6B4545'][i%4]}`;
+    document.body.appendChild(s);setTimeout(()=>s.remove(),1300);}
+}
+
+/* favourites */
+$$('.fav').forEach(b=>b.addEventListener('click',e=>{
+  const i=+b.dataset.i;const now=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',now);
+  b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop');
+  savedFavs=now?[...new Set([...savedFavs,i])]:savedFavs.filter(v=>v!==i);
+  try{localStorage.setItem('blushFavs',JSON.stringify(savedFavs))}catch(err){}
+  if(now){const r=b.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,['♡'],8);}
+}));
+
+/* feeling */
+const feels={coffee:{c:['☕','♡','✦'],m:'one warm latte, coming right up ♡'},dessert:{c:['🍰','♡','✿'],m:'life is short, cake goes first ♡'},date:{c:['💕','♡','♡'],m:'the window arch table is yours ♡'},vibe:{c:['🌸','✦','✿'],m:'stay as long as you like ♡'}};
+$$('.feel-btn').forEach(b=>b.addEventListener('click',e=>{
+  $$('.feel-btn').forEach(x=>x.classList.toggle('on',x===b));
+  const f=feels[b.dataset.feel];const r=b.getBoundingClientRect();
+  burst(e.clientX||r.left+r.width/2,e.clientY||r.top+r.height/2,f.c,16);
+  const msg=$('#feel-msg');msg.textContent=f.m;msg.classList.remove('show');void msg.offsetWidth;msg.classList.add('show');
+}));
+
+/* ================= Nav ================= */
+const nav=$('#nav');
+const onScroll=()=>nav.classList.toggle('scrolled',scrollY>20);
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+const burger=$('.burger'),mm=$('#mobile-menu');
+const setMenu=o=>{mm.hidden=!o;burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?'Close menu':'Open menu');document.body.style.overflow=o?'hidden':''};
+burger.addEventListener('click',()=>setMenu(mm.hidden));
+$$('#mobile-menu a, #mobile-menu button').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+addEventListener('resize',()=>{if(innerWidth>900&&!mm.hidden)setMenu(false)});
+/* active link */
+const links=$$('.nav-links a');
+const secObs=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){const id=en.target.id;links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id))}}),{rootMargin:'-45% 0px -50% 0px'});
+['home','story','menu','gallery','reviews','visit'].forEach(id=>secObs.observe(document.getElementById(id)));
+
+/* ================= Modals ================= */
+let lastFocus=null;
+function openModal(name){
+  const m=$('#modal-'+name);if(!m)return;
+  $$('.modal').forEach(x=>x.hidden=true);
+  lastFocus=document.activeElement;m.hidden=false;document.body.style.overflow='hidden';
+  setTimeout(()=>{const f=m.querySelector('input,select,button');f&&f.focus()},60);
+}
+function closeModal(){const m=$$('.modal').find(x=>!x.hidden);if(!m)return;m.hidden=true;document.body.style.overflow='';lastFocus&&lastFocus.focus()}
+document.addEventListener('click',e=>{
+  const o=e.target.closest('[data-open]');if(o){e.preventDefault();setMenu(false);openModal(o.dataset.open);return}
+  if(e.target.closest('[data-close]')||e.target.classList.contains('modal'))closeModal();
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){if(!mm.hidden)setMenu(false);closeModal()}
+  if(e.key==='Tab'){const m=$$('.modal').find(x=>!x.hidden);if(!m)return;const f=$$('button,input,select,textarea,a[href]',m).filter(x=>!x.disabled&&x.offsetParent);if(!f.length)return;
+    if(e.shiftKey&&document.activeElement===f[0]){e.preventDefault();f[f.length-1].focus()}else if(!e.shiftKey&&document.activeElement===f[f.length-1]){e.preventDefault();f[0].focus()}}
+});
+
+/* Reservation — placeholder. Connect your booking system inside handleReservation(). */
+async function handleReservation(data){
+  // e.g. await fetch('https://your-booking-api/reservations',{method:'POST',body:JSON.stringify(data)})
+  return {ok:true};
+}
+const rForm=$('#reserve-form');
+rForm.addEventListener('submit',async e=>{
+  e.preventDefault();let ok=true;
+  const req=[['r-name','Please tell us your name.'],['r-phone','Add a phone number so we can confirm.'],['r-date','Choose a date.']];
+  req.forEach(([id,msg])=>{const el=$('#'+id);const err=$('#'+id+'-err');const bad=!el.value.trim()||(id==='r-phone'&&el.value.replace(/\D/g,'').length<8);err.textContent=bad?(id==='r-phone'&&el.value?'That number looks too short.':msg):'';el.setAttribute('aria-invalid',bad);if(bad&&ok){el.focus();ok=false}});
+  if(!ok)return;
+  const data=Object.fromEntries(new FormData(rForm));
+  await handleReservation(data);
+  const d=new Date(data.date+'T00:00');const t=tSel.options[tSel.selectedIndex].text;
+  $('#reserve-body').innerHTML=`<div class="success"><span class="big" aria-hidden="true">♡</span><h3 id="reserve-title">See you soon, ${data.name.split(' ')[0].replace(/[<>&"]/g,'')}!</h3><p>Table for ${data.guests} · ${d.toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short'})} at ${t}</p><p style="font-size:.9rem">Online booking is coming soon. For now, this request is a preview; please call us to confirm.</p><button class="btn btn-pink" type="button" data-close style="margin-top:18px">Close</button></div>`;
+  const r=$('#modal-reserve .modal-box').getBoundingClientRect();burst(r.left+r.width/2,r.top+120,['♡','✦','✿'],18);
+  $('#reserve-body button').focus();
+});
+
+/* Newsletter */
+$('#news-form').addEventListener('submit',e=>{
+  e.preventDefault();const inp=$('#news-email');const st=$('#news-status');
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inp.value.trim())){st.textContent='Hmm, that email looks incomplete. Try again?';inp.focus();return}
+  st.textContent='Welcome to the Blush Club ♡ sweet things are on their way.';inp.value='';
+  const r=e.target.getBoundingClientRect();burst(r.left+r.width/2,r.top,['♡','✦'],14);
+});
+
+/* Copy */
+$$('.copy').forEach(b=>b.addEventListener('click',async()=>{
+  const txt=$('#'+b.dataset.copy).textContent;
+  try{await navigator.clipboard.writeText(txt);b.textContent='Copied ♡'}catch(err){const r=document.createRange();r.selectNodeContents($('#'+b.dataset.copy));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected'}
+  setTimeout(()=>b.textContent='Copy',1600);
+}));
+
+/* ================= Reveal ================= */
+const rvEls=$$('.rv');
+if(!reduce&&'IntersectionObserver' in window){
+  const vh=innerHeight;
+  rvEls.forEach(el=>{if(el.getBoundingClientRect().top>vh*.95)el.classList.add('rv-wait')});
+  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.remove('rv-wait');io.unobserve(en.target)}}),{rootMargin:'0px 0px -8% 0px'});
+  rvEls.forEach(el=>el.classList.contains('rv-wait')&&io.observe(el));
+}
+
+/* ================= Parallax ================= */
+if(!reduce){
+  const art=$('.hero-art'),pol=$('[data-parallax]');let ticking=false;
+  addEventListener('scroll',()=>{if(ticking)return;ticking=true;requestAnimationFrame(()=>{
+    const y=scrollY;if(y<innerHeight*1.2)art.style.transform=`translateY(${y*.12}px)`;
+    if(pol){const r=pol.getBoundingClientRect();pol.style.translate=`0 ${(r.top-innerHeight/2)*-0.06}px`}
+    ticking=false})},{passive:true});
+}
+
+/* ================= Cursor ================= */
+if(!reduce&&matchMedia('(pointer:fine)').matches){
+  document.body.classList.add('has-cursor');
+  const cur=$('.cursor');let mx=-100,my=-100,cx=-100,cy=-100,lastT=0,lx=0,ly=0,count=0;
+  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;
+    const now=performance.now();const dist=Math.hypot(mx-lx,my-ly);
+    if(now-lastT>120&&dist>70&&Math.random()<.4&&count<14){lastT=now;lx=mx;ly=my;count++;
+      const h=document.createElement('span');h.className='trail';h.textContent='♡';h.setAttribute('aria-hidden','true');h.style.setProperty('--x',mx+10+'px');h.style.setProperty('--y',my-6+'px');document.body.appendChild(h);setTimeout(()=>{h.remove();count--},1100);}
+  },{passive:true});
+  document.addEventListener('mouseleave',()=>{mx=my=-100});
+  (function loop(){cx+=(mx-cx)*.28;cy+=(my-cy)*.28;cur.style.transform=`translate(${cx}px,${cy}px)`;requestAnimationFrame(loop)})();
+  document.addEventListener('mouseover',e=>{cur.classList.toggle('big',!!e.target.closest('a,button,.card-img,.g-item,.polaroid,.arch,input,select,textarea,label'))});
+}
+})();
+</script>
+</body>
+</html>
